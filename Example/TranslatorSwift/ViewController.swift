@@ -1,24 +1,21 @@
-//
-//  ViewController.swift
-//  TranslatorSwift
-//
-//  Created by git on 04/09/2017.
-//  Copyright (c) 2017 git. All rights reserved.
-//
-
 import UIKit
+import TranslatorSwift
 
 class ViewController: UIViewController {
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var outputLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    let translator = Translator(subscriptionKey: "YOUR_KEY")
+
+    @IBAction func onTranslateButton(_ sender: Any) {
+        translator.translate(input: inputTextField.text!, to: "ja") { (result) in
+            switch result {
+            case .success(let translation):
+                self.outputLabel.text = translation
+            case .failure(let error):
+                self.outputLabel.text = error.debugDescription
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
