@@ -39,7 +39,7 @@ pod "TranslatorSwift"
 
 ## Author
 
-git, kreuz45@kreuz45.com
+Sota Yokoe, kreuz45@kreuz45.com
 
 ## License
 
