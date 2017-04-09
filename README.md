@@ -7,6 +7,23 @@
 
 ## Example
 
+```
+import TranslatorSwift
+
+let translator = Translator(subscriptionKey: "YOUR_KEY")
+
+@IBAction func onTranslateButton(_ sender: Any) {
+    translator.translate(input: inputTextField.text!, to: "ja") { (result) in
+        switch result {
+        case .success(let translation):
+            self.outputLabel.text = translation
+        case .failure(let error):
+            self.outputLabel.text = error.debugDescription
+        }
+    }
+}
+```
+
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
